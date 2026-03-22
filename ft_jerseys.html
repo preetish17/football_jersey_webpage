@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2025/26 Elite Jersey Shop</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #1a1a1a; color: white; }
+        .container { display: flex; justify-content: center; gap: 25px; padding: 40px; flex-wrap: wrap; }
+        .card { background: #2a2a2a; padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; width: 240px; border: 1px solid #444; }
+        .card:hover { transform: translateY(-10px); border-color: #f39c12; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        img { width: 100%; border-radius: 8px; height: 300px; object-fit: cover; }
+        h3 { margin: 15px 0 5px; font-size: 1.2rem; }
+        .price { color: #f39c12; font-weight: bold; margin-bottom: 10px; }
+        
+        #order-form { display: none; background: #2a2a2a; width: 350px; margin: 40px auto; padding: 30px; border-radius: 15px; border: 1px solid #444; }
+        input { width: 90%; margin: 12px 0; padding: 12px; border-radius: 5px; border: none; }
+        button { background: #e74c3c; color: white; border: none; padding: 12px 25px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 5px; margin-top: 10px; }
+        button:hover { background: #c0392b; }
+        .back-btn { display: inline-block; margin-top: 15px; color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <h1 style="margin-top: 40px;">Football Jerseys for Men </h1>
+    <p>Select a jersey to customize and book your order.</p>
+    
+    <div class="container" id="catalog">
+        <div class="card" onclick="openBooking('Real Madrid Jersey')">
+            <img src="https://5.imimg.com/data5/ECOM/Default/2024/5/421759548/OW/GN/YI/7801935/real-madrid-23-24-third-authentic-jersey-black-iq4923-hm1.png">
+            <h3>Real Madrid</h3>
+            <p class="price">₹3,500.00</p>
+        </div>
+
+        <div class="card" onclick="openBooking('FC Barcelona Jersey')">
+            <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/a7a7be36-1b2b-42ba-82c7-195a733e3d17/FCB+M+NK+DFADV+JSY+SS+MATCH+SE.png">
+            <h3>FC Barcelona</h3>
+            <p class="price">₹3,400.00</p>
+        </div>
+
+        <div class="card" onclick="openBooking('Manchester United Jersey')">
+            <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/bb34e2d7ef774076b2384c4aecc3c090_9366/Manchester_United_24-25_Home_Jersey_Red_IU1397_HM1.jpg">
+            <h3>Man United</h3>
+            <p class="price">₹3,200.00</p>
+        </div>
+    </div>
+
+    <div id="order-form">
+        <h2 id="selected-item" style="color: #f39c12;"></h2>
+        <form id="bookingForm" onsubmit="confirmOrder(event)">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="text" id="address" placeholder="Shipping Address" required>
+            <button type="submit">PLACE ORDER</button>
+        </form>
+        <a href="#" class="back-btn" onclick="location.reload()">← Back to Selection</a>
+    </div>
+
+    <script>
+        function openBooking(jerseyName) {
+            document.getElementById('catalog').style.display = 'none';
+            document.getElementById('order-form').style.display = 'block';
+            document.getElementById('selected-item').innerText = jerseyName;
+        }
+
+        function confirmOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const jersey = document.getElementById('selected-item').innerText;
+            alert(`Success! ${name}, your order for the ${jersey} has been received.`);
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
